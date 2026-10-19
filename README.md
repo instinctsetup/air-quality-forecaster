@@ -2,6 +2,10 @@
 
 **Hourly air-pollution (CO) forecasting on the real UCI Air Quality dataset - a NumPy neural net trained with pinball loss, so it predicts *intervals*, not just numbers. Honest baselines included.**
 
+- **Demo video**: https://drive.google.com/file/d/1rbKZGsq1VaKrvjIRi9SoTdki0Dv0AlGu/view
+- **Project report (PDF)**: https://drive.google.com/file/d/1vCkMRa9JA4dzUMgISWTn5KfP-0jrnHK1/view
+
+
 The dashboard shows recent actual CO, a recursive 24-hour forecast, and an 80% prediction fan that widens as uncertainty compounds. Everything (network, loss, metrics, baselines) is from scratch - no sklearn, no torch.
 
 ## What makes this one worth reading
