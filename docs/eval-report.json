@@ -1,0 +1,15 @@
+{
+  "one_step": {
+    "model_mae": 0.66,
+    "model_rmse": 0.929,
+    "naive_mae": 0.533,
+    "seasonal_naive_mae": 0.948,
+    "moving_average_mae": 0.898,
+    "interval_coverage_80pct_target": 0.746
+  },
+  "twenty_four_hour_recursive": {
+    "model_mae": 0.922,
+    "naive_flat_mae": 1.253,
+    "seasonal_naive_mae": 0.852
+  }
+}

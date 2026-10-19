@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>air-quality-forecaster - quantile forecasting in pure NumPy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>air-quality-forecaster</h1>
+  <p class="sub">hourly CO forecasting on the real UCI Air Quality dataset - NumPy MLP + pinball loss, with honest baselines</p>
+</header>
+
+<section class="chart-panel">
+  <h2>Recent actuals + 24h forecast <span class="hint">fan = 80% prediction interval (p10-p90)</span></h2>
+  <canvas id="chart" width="1000" height="380"></canvas>
+  <div id="legend" class="hint"></div>
+</section>
+
+<section class="metrics">
+  <h2>Honest evaluation <span class="hint">held-out last 20% by time; baselines a model must beat</span></h2>
+  <table id="report">
+    <thead><tr><th>horizon</th><th>model</th><th>naive (flat)</th><th>seasonal naive (t-24)</th><th>moving avg</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div id="coverage" class="hint"></div>
+</section>
+<script src="/static/app.js"></script>
+</body>
+</html>
