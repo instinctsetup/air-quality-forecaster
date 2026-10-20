@@ -50,8 +50,17 @@ class MLP:
         q50 = self._raw[:, 1:2]
         q10 = q50 - self._softplus(self._raw[:, 0:1])
         q90 = q50 + self._softplus(self._raw[:, 2:3])
-        self._sp_lo = self._softplus(self._raw[:, 0:1])
-        self._sp_hi = self._softplus(self._raw[:, 2:3])
+        return np.hstack([q10, q50, q90])
+
+    def predict(self, X):
+        """Stateless inference pass - safe to call concurrently, unlike
+        forward() which caches activations for backward()."""
+        z1 = np.maximum(0, X @ self.W1 + self.b1)
+        z2 = np.maximum(0, z1 @ self.W2 + self.b2)
+        raw = z2 @ self.W3 + self.b3
+        q50 = raw[:, 1:2]
+        q10 = q50 - self._softplus(raw[:, 0:1])
+        q90 = q50 + self._softplus(raw[:, 2:3])
         return np.hstack([q10, q50, q90])
 
     def backward(self, grad_out, lr):

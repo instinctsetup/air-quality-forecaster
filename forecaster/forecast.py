@@ -20,7 +20,7 @@ def recursive_forecast(model, seed_co: list[float], start_hour: int, horizon: in
         feats = np.array(buf[-lags:]
                          + [math.sin(2 * math.pi * (hour % 24) / 24),
                             math.cos(2 * math.pi * (hour % 24) / 24)])
-        q = model.forward(((feats - x_mu) / x_sd)[None, :])[0] * y_sd + y_mu
+        q = model.predict(((feats - x_mu) / x_sd)[None, :])[0] * y_sd + y_mu
         lo.append(float(q[0])); mid.append(float(q[1])); hi.append(float(q[2]))
         buf.append(float(q[1]))          # feed the median back
     return lo, mid, hi

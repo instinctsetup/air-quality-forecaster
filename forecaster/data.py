@@ -12,7 +12,8 @@ import numpy as np
 
 def load_series(path: str | None = None) -> list[dict]:
     path = path or str(Path(__file__).parent.parent / "data" / "hourly.jsonl")
-    return [json.loads(line) for line in open(path)]
+    with open(path) as f:
+        return [json.loads(line) for line in f]
 
 
 def make_windows(rows: list[dict], lags: int = 24):
